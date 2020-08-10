@@ -10,8 +10,9 @@ if __name__=="__main__":
         json_file.write(response.content)
 
     filename = 'geojson.json'
-    counties = [json.loads(line) for line in open(filename)]
-    
+    #counties = [json.loads(line) for line in open(filename)]
+    counties = json.load(open(filename))
+
     df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/fips-unemp-16.csv",
         dtype={"fips": str})
 
