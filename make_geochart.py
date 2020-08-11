@@ -2,6 +2,24 @@ import requests
 import json
 import pandas as pd
 
+class GeoChart(object):
+    def __init__(self, data, geojson):
+        self.data = data
+        self.geojson = geojson
+
+    def get_fig(self, column_name, palette):
+        #column_name will be 'girl_count' or 'boy_count'
+        fig = px.choropleth_mapbox(
+            self.data, geojson=self.geojson, 
+            locations='NUTS318CD', 
+            color=column_name,
+            featureidkey='properties.nuts318cd',
+            zoom=6, center = {"lat": 52.7064, "lon": 2.7418},
+            labels={column_name:'name'}, mapbox_style="carto-positron",
+            color_discrete_sequence=palette
+        )
+        return fig
+
 def get_ons_nuts(ons_data, converter):
     merged = ons_data.merge(converter, on="LAU118CD", how="left")
     merged = merged.drop_duplicates('NUTS318CD')
@@ -30,14 +48,8 @@ if __name__=="__main__":
             'rgb(247,104,161)', 
             'rgb(252,197,192)', 
             'rgb(234,169,189)']
-
-    fig = px.choropleth_mapbox(ons_data, geojson=counties, 
-        locations='NUTS318CD', color='girl_count',
-        featureidkey='properties.nuts318cd',
-        zoom=6, center = {"lat": 52.7064, "lon": 2.7418},
-        labels={'girl_count':'name'}, mapbox_style="carto-positron",
-        color_discrete_sequence=girl_colours
-        )
+    gc = GeoChart(ons_data, counties)
+    fig = gc.get_fig('girl_count', girl_colours)
     fig.update_geos(
             fitbounds="locations", 
             visible=False, 
