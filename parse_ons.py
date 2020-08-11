@@ -2,11 +2,11 @@ import pandas as pd
 
 def format_csv(count_csv_name):
     count_csv = pd.read_csv(count_csv_name, index_col=0)
-    count_csv = count_csv.set_index("AREANM")
+    count_csv = count_csv.set_index("AREACD")
     return count_csv
 
 def drop_counts(count_csv):
-    count_csv = count_csv.drop("AREACD", axis=1)
+    count_csv = count_csv.drop("AREANM", axis=1)
     count_csv = count_csv.drop("Total", axis=1)
     return count_csv
 
@@ -26,4 +26,4 @@ if __name__=="__main__":
         count_csv = get_most_popular(count_csv)
         top_by_region.append(count_csv['Most_Popular'])
     top_by_region = pd.concat(top_by_region, axis=1)
-    top_by_region.to_csv('top_by_region.csv', index="AREANM")
+    top_by_region.to_csv('top_by_region.csv', index="AREACD")
