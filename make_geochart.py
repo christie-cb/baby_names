@@ -18,8 +18,8 @@ if __name__=="__main__":
     filename = 'NUTS_county_boundaries.geojson'
     counties = json.load(open(filename))
 
-    converter = pd.read_csv('areacd_converter.csv')
-    ons_data = pd.read_csv('top_by_region.csv')
+    converter = pd.read_csv('csv_data/areacd_converter.csv')
+    ons_data = pd.read_csv('csv_data/top_by_region.csv')
     ons_data = get_ons_nuts(ons_data, converter)
 
     import plotly.express as px
