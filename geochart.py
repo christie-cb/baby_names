@@ -27,8 +27,9 @@ if __name__=="__main__":
     fig = px.choropleth_mapbox(ons_data, geojson=counties, 
         locations='NUTS318CD', color='girl_count',
         featureidkey='properties.nuts318cd',
-        zoom=5, center = {"lat": 51.4816, "lon": 3.1791},
-        labels={'girl_count':'name'}, mapbox_style="carto-positron"
+        zoom=6, center = {"lat": 52.7064, "lon": 2.7418},
+        labels={'girl_count':'name'}, mapbox_style="carto-positron",
+        color_discrete_sequence=px.colors.qualitative.Pastel1
         )
     fig.update_geos(
             fitbounds="locations", 
@@ -36,4 +37,4 @@ if __name__=="__main__":
             showcoastlines=True)
     fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
     fig.show()
-
+    fig.write_html('geochart.html')
