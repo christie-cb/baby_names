@@ -20,6 +20,13 @@ class GeoChart(object):
         )
         return fig
 
+def make_color_palette(list_of_num_lists):
+    rgb_list = []
+    for item in list_of_num_lists:
+        rgb = 'rgb({}, {}, {})'.format(item[0], item[1], item[2])
+        rgb_list.append(rgb)
+    return rgb_list
+
 def get_ons_nuts(ons_data, converter):
     merged = ons_data.merge(converter, on="LAU118CD", how="left")
     merged = merged.drop_duplicates('NUTS318CD')
@@ -42,14 +49,20 @@ if __name__=="__main__":
 
     import plotly.express as px
 
-    girl_colours = [
-            'rgb(250,159,181)', 
-            'rgb(253,224,221)',
-            'rgb(247,104,161)', 
-            'rgb(252,197,192)', 
-            'rgb(234,169,189)']
+    girl_colors = [
+            [250,159,181], 
+            [253,224,221],
+            [247,104,161], 
+            [252,197,192], 
+            [234,169,189],
+            [220,57,119],
+            [231,41,138],
+            [255,247,243]
+            ]
+    girl_colors = make_color_palette(girl_colors)
+
     gc = GeoChart(ons_data, counties)
-    fig = gc.get_fig('girl_count', girl_colours)
+    fig = gc.get_fig('girl_count', girl_colors)
     fig.update_geos(
             fitbounds="locations", 
             visible=False, 
