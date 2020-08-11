@@ -24,12 +24,19 @@ if __name__=="__main__":
 
     import plotly.express as px
 
+    girl_colours = [
+            'rgb(250,159,181)', 
+            'rgb(253,224,221)',
+            'rgb(247,104,161)', 
+            'rgb(252,197,192)', 
+            'rgb(234,169,189)']
+
     fig = px.choropleth_mapbox(ons_data, geojson=counties, 
         locations='NUTS318CD', color='girl_count',
         featureidkey='properties.nuts318cd',
         zoom=6, center = {"lat": 52.7064, "lon": 2.7418},
         labels={'girl_count':'name'}, mapbox_style="carto-positron",
-        color_discrete_sequence=px.colors.qualitative.Pastel1
+        color_discrete_sequence=girl_colours
         )
     fig.update_geos(
             fitbounds="locations", 
