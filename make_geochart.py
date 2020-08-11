@@ -15,7 +15,7 @@ def get_geojson_areanames(json_data):
     return geojson_names
 
 if __name__=="__main__":
-    filename = 'NUTS_Level_3__January_2018__Boundaries.geojson'
+    filename = 'NUTS_county_boundaries.geojson'
     counties = json.load(open(filename))
 
     converter = pd.read_csv('areacd_converter.csv')
