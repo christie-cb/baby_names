@@ -2,8 +2,9 @@ import requests
 import json
 import pandas as pd
 
-def get_ons_areanames(ons_data):
-    return ons_data["LAU118CD"]
+def get_ons_nuts(ons_data, converter):
+    merged = ons_data.merge(converter, on="LAU118CD")
+    return merged
 
 def get_geojson_areanames(json_data):
     geojson_names = []
