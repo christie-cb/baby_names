@@ -24,11 +24,15 @@ if __name__=="__main__":
 
     import plotly.express as px
 
-    fig = px.choropleth(ons_data, geojson=counties, locations='NUTS318CD', color='girl_count',
+    fig = px.choropleth_mapbox(ons_data, geojson=counties, 
+        locations='NUTS318CD', color='girl_count',
         featureidkey='properties.nuts318cd',
-        labels={'girl_count':'name'}
+        labels={'girl_count':'name'}, mapbox_style="carto-positron"
         )
-    fig.update_geos(fitbounds="locations", visible=False)
+    fig.update_geos(
+            fitbounds="locations", 
+            visible=False, 
+            showcoastlines=True)
     fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
     fig.show()
 
