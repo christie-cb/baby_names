@@ -21,11 +21,11 @@ if __name__=="__main__":
     counts = ['girl_count', 'boy_count']
     top_by_region = []
     for count in counts:
-        filename = count + '.csv'
+        filename = 'data/' + count + '.csv'
         count_csv = format_csv(filename)
         count_csv = drop_counts(count_csv)
         count_csv.fillna(0, inplace=True)
         count_csv = get_most_popular(count_csv, count)
         top_by_region.append(count_csv[count])
     top_by_region = pd.concat(top_by_region, axis=1)
-    top_by_region.to_csv('top_by_region.csv', index="LAU118CD")
+    top_by_region.to_csv('data/top_by_region.csv', index="LAU118CD")
