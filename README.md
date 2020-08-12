@@ -13,4 +13,3 @@ I think it's nice how name popularity can show cultural differences within the U
 Currently I only have screenshots for the girls' names. The colour palette is slightly regrettable as some of the colours are too similar to one another.
 However, the real graph allows you to hover over regions to view the name which is more useful than the original, contrasting colour scheme.
 
-![Girls' most popular names by county](/Users/ccb/Desktop/girl_count.png)
