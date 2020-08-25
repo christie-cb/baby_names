@@ -8,7 +8,7 @@ were choosing a name for their daughter. None of the baby names websites appear 
 Firstly, because name popularity can differ across regions and the popularity of a name clearly influences the parents' decision. Secondly
 I think it's nice how name popularity can show cultural differences within the UK.
 
-## Screenshots
+<h2> Screenshots </h2>
 
 Currently I only have screenshots for the girls' names. The colour palette is slightly regrettable as some of the colours are too similar to one another.
 However, the real graph allows you to hover over regions to view the name which is more useful than the original, contrasting colour scheme.
